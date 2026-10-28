@@ -9,7 +9,7 @@
 
 #define VERTEX_DIM 75
 
-static class MotionVertex : public g2o::BaseVertex<VERTEX_DIM, KinematicModel *>
+class MotionVertex : public g2o::BaseVertex<VERTEX_DIM, KinematicModel *>
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -61,7 +61,7 @@ protected:
     std::vector<Eigen::Vector3f> _backup_tran;
 };
 
-static class Position3dEdge : public g2o::BaseUnaryEdge<3, Eigen::Vector3f, MotionVertex>
+class Position3dEdge : public g2o::BaseUnaryEdge<3, Eigen::Vector3f, MotionVertex>
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -87,7 +87,7 @@ protected:
     const Eigen::Vector3f local_position;
 };
 
-static class Position2dEdge : public g2o::BaseUnaryEdge<2, Eigen::Vector2f, MotionVertex>
+class Position2dEdge : public g2o::BaseUnaryEdge<2, Eigen::Vector2f, MotionVertex>
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -122,7 +122,7 @@ protected:
     const Eigen::Matrix<float, 3, 4> KT;
 };
 
-static class OrientationEdge : public g2o::BaseUnaryEdge<3, Eigen::Quaternionf, MotionVertex>
+class OrientationEdge : public g2o::BaseUnaryEdge<3, Eigen::Quaternionf, MotionVertex>
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
