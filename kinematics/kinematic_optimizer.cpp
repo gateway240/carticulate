@@ -55,8 +55,8 @@ public:
         return J;
 	}
 protected:
-    const std::vector<bool> &optimize_pose;
-    const bool &optimize_tran;
+    std::vector<bool> optimize_pose;
+    bool optimize_tran;
     std::vector<std::vector<Eigen::Quaternionf>> _backup_pose;
     std::vector<Eigen::Vector3f> _backup_tran;
 };
