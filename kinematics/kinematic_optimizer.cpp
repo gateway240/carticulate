@@ -16,9 +16,9 @@ public:
     MotionVertex() : optimize_pose({}), optimize_tran(true) {}
     MotionVertex(KinematicModel &model, const std::vector<bool> &optimize_pose, bool optimize_tran) : optimize_pose(optimize_pose), optimize_tran(optimize_tran) { setEstimate(&model); }
     virtual void setToOriginImpl() {}
-    virtual void oplusImpl(const number_t *update)
+    virtual void oplusImpl(const g2o::number_t *update)
     {
-        Eigen::VectorX<number_t>::ConstMapType delta(update, VERTEX_DIM);
+        Eigen::VectorX<g2o::number_t>::ConstMapType delta(update, VERTEX_DIM);
         _estimate->update_state(delta.cast<float>());
     }
     virtual bool read(std::istream &in) { return false; }
